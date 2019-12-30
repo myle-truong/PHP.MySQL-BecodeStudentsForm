@@ -1,4 +1,17 @@
 <?php
+$dbHost = "localhost";
+$dbUser = "root";
+$dbpassword = " ";
+$dbName = "student";
+
+try {
+ $dsn = "mysql:host=" . $dbHost . ";dbname=" . $dbName;
+ $pdo = new PDO($dsn, $dbUser, $dbPassword);
+ echo "Connection successful";
+} catch(PDOException $e){
+ echo "DB Connection failed : " .$e->getMessage();
+}
+
 $id = $_POST['ID'];
 $first_name = $_POST['first_name'];
 $first_name = $_POST['first_name'];
@@ -13,6 +26,3 @@ $quote = $_POST['quote'];
 $quote_author = $_POST['quote_author'];
 $created_at = $_POST['created_at'];
 
-
-
-?>
