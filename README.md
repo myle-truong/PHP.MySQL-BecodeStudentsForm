@@ -1,5 +1,4 @@
-# PHP.SQL-BecodeStudentsForm
-# Challenge: MySQL
+# PHP.MySQL-BecodeStudentsForm
 
 - Repository: `php-mysql-introduction`
 - Type of Challenge: `Learning challenge`
