@@ -1,28 +1,29 @@
 <?php
-$dbHost = "localhost";
-$dbUser = "root";
-$dbpassword = " ";
-$dbName = "student";
 
-try {
- $dsn = "mysql:host=" . $dbHost . ";dbname=" . $dbName;
- $pdo = new PDO($dsn, $dbUser, $dbPassword);
- echo "Connection successful";
-} catch(PDOException $e){
- echo "DB Connection failed : " .$e->getMessage();
-}
+require_once('connection.php');
 
+//require_once('validator/Validation.class.php');
+
+$avatar = $_POST['avatar'];
 $id = $_POST['ID'];
+$username = $_POST['username'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
+$email = $_POST['email'];
 $gender = $_POST['gender'];
+
 $linkedin = $_POST['linkedin'];
 $github = $_POST['github'];
-$email = $_POST['email'];
+
 $preferred_language = $_POST['preferred_language'];
-$avatar = $_POST['avatar'];
 $video = $_POST['video'];
 $quote = $_POST['quote'];
 $quote_author = $_POST['quote_author'];
 $created_at = $_POST['created_at'];
 
+if (!empty($id) || !empty($username) || !empty($first_name) || !empty($last_name) || !empty($gender) || !empty($email) || !empty($gender) || !empty($linkedin) !empty($github) || !empty($preferred_language)) {
+ # code ... 
+} else {
+  echo "All field are required";
+  die();
+}
