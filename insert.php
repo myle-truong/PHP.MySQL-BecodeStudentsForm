@@ -1,6 +1,6 @@
 <?php
 
-require_once('connection.php');
+require_once('index.php');
 
 //require_once('validator/Validation.class.php');
 
@@ -21,8 +21,8 @@ $quote = $_POST['quote'];
 $quote_author = $_POST['quote_author'];
 $created_at = $_POST['created_at'];
 
-if (!empty($id) || !empty($username) || !empty($first_name) || !empty($last_name) || !empty($gender) || !empty($email) || !empty($gender) || !empty($linkedin) !empty($github) || !empty($preferred_language)) {
- # code ... 
+if (!empty($id) || !empty($username) || !empty($first_name) || !empty($last_name) || !empty($gender) || !empty($email) || !empty($gender) || !empty($preferred_language)) {
+
 } else {
   echo "All field are required";
   die();
