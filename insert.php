@@ -2,7 +2,7 @@
 
 require_once('index.php');
 
-//require_once('validator/Validation.class.php');
+
 
 $avatar = $_POST['avatar'];
 $id = $_POST['ID'];
@@ -33,8 +33,8 @@ if (!empty($id) || !empty($username) || !empty($first_name) || !empty($last_name
     if (mysqli_connect_error()){
        die('Connect Error('. mysqli_connect_error().')'. mysqli_connect_error());
     } else {
-       $SELECT = "SELECT email From register Where email = ? Limit 1";
-       $INSERT = "INSERT register (id, username, first_name, last_name, email, gender, linkedin, github, preferred_language, video, quote, qoute_author, created_at) value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+       $SELECT = "SELECT email From student Where email = ? Limit 1";
+       $INSERT = "INSERT student (avata, id, username, first_name, last_name, email, gender, linkedin, github, preferred_language, video, quote, qoute_author, created_at) value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
        
        //Prepare statement
        $stmt = $conn->prepare($SELECT);
@@ -43,6 +43,19 @@ if (!empty($id) || !empty($username) || !empty($first_name) || !empty($last_name
        $stmt->bind_result($email);
        $stmt->store_result();
        $rnum = $stmt->num_rows;
+
+       if($rnum==0){
+        $stmt->close();
+
+        $stmt = $conn->prepare($INSERT);
+        $stmt->bind_para("sisssssssssss", $avatar,$id, $username, $first_name, $last_name, $email, $gender, $linkedin, $github, $preferred_language, $video, $quote, $quote_author,$created_at);
+        $stmt->execute();
+        echo "new record inserted successfully";
+       }else{
+        echo "Email already taken";
+       }
+       $stmt->close();
+       $conn->close();
     }
 } else {
   echo "All field are required";
